@@ -1,0 +1,298 @@
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: backdropIn var(--transition-base) ease-out;
+}
+
+@keyframes backdropIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-backdrop.closing {
+    animation: backdropOut var(--transition-base) ease-in forwards;
+}
+
+@keyframes backdropOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.modal {
+    background-color: #ffffff;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-height: calc(100vh - 2rem);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: modalIn var(--transition-base) ease-out;
+    overflow: hidden;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(-0.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal.closing {
+    animation: modalOut var(--transition-base) ease-in forwards;
+}
+
+@keyframes modalOut {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.96) translateY(-0.5rem);
+    }
+}
+
+.modal-sm {
+    max-width: 26rem;
+}
+
+.modal-md {
+    max-width: 36rem;
+}
+
+.modal-lg {
+    max-width: 48rem;
+}
+
+.modal-xl {
+    max-width: 64rem;
+}
+
+.modal-full {
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-gray-200);
+    flex-shrink: 0;
+    gap: 1rem;
+}
+
+.modal-header-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    line-height: 1.4;
+}
+
+.modal-subtitle {
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+    margin-top: 0.25rem;
+}
+
+.modal-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-md);
+    color: var(--color-gray-400);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.modal-close-btn:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-300) transparent;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-full);
+}
+
+.modal-body.no-padding {
+    padding: 0;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-gray-200);
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.modal-footer.space-between {
+    justify-content: space-between;
+}
+
+.modal-section {
+    margin-bottom: 1.25rem;
+}
+
+.modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.modal-section-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.625rem;
+}
+
+.confirm-modal .modal-body {
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.confirm-modal-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-modal-icon.danger {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+}
+
+.confirm-modal-icon.warning {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+}
+
+.confirm-modal-icon.info {
+    background-color: var(--color-info-light);
+    color: var(--color-info);
+}
+
+.confirm-modal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 0.5rem;
+}
+
+.confirm-modal-message {
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    line-height: 1.6;
+}
+
+.slide-panel-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal);
+    animation: backdropIn var(--transition-base) ease-out;
+}
+
+.slide-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 30rem;
+    background-color: #ffffff;
+    box-shadow: var(--shadow-xl);
+    z-index: calc(var(--z-modal) + 1);
+    display: flex;
+    flex-direction: column;
+    animation: panelSlideIn var(--transition-slow) ease-out;
+}
+
+@keyframes panelSlideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.slide-panel.closing {
+    animation: panelSlideOut var(--transition-slow) ease-in forwards;
+}
+
+@keyframes panelSlideOut {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+
+.slide-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-gray-200);
+    flex-shrink: 0;
+}
+
+.slide-panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-300) transparent;
+}
+
+.slide-panel-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}

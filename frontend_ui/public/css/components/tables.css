@@ -1,0 +1,375 @@
+.dt-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.dt-header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid var(--color-gray-200);
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.dt-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.dt-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.dt-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    white-space: nowrap;
+}
+
+.dt-subtitle {
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+    white-space: nowrap;
+}
+
+.dt-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-gray-100);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    min-width: 14rem;
+}
+
+.dt-search:focus-within {
+    background-color: #ffffff;
+    border-color: var(--color-primary-300);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dt-search input {
+    background: none;
+    border: none;
+    outline: none;
+    flex: 1;
+    color: var(--color-gray-900);
+    font-size: inherit;
+    min-width: 0;
+}
+
+.dt-search input::placeholder {
+    color: var(--color-gray-400);
+}
+
+.dt-table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-300) transparent;
+    flex: 1;
+}
+
+.dt-table-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.dt-table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dt-table-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-full);
+}
+
+.dt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.dt-thead {
+    background-color: var(--color-gray-50);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.dt-thead th {
+    padding: 0.625rem 1rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-gray-500);
+    border-bottom: 1px solid var(--color-gray-200);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.dt-thead th.sortable {
+    cursor: pointer;
+}
+
+.dt-thead th.sortable:hover {
+    color: var(--color-gray-900);
+    background-color: var(--color-gray-100);
+}
+
+.dt-thead th .sort-indicator {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 0.25rem;
+    opacity: 0.4;
+    vertical-align: middle;
+}
+
+.dt-thead th.asc .sort-indicator,
+.dt-thead th.desc .sort-indicator {
+    opacity: 1;
+    color: var(--color-primary-600);
+}
+
+.dt-tbody tr {
+    border-bottom: 1px solid var(--color-gray-100);
+    transition: background-color var(--transition-fast);
+}
+
+.dt-tbody tr:last-child {
+    border-bottom: none;
+}
+
+.dt-striped .dt-tbody tr:nth-child(even) {
+    background-color: var(--color-gray-50);
+}
+
+.dt-hoverable .dt-tbody tr:hover {
+    background-color: var(--color-primary-50);
+}
+
+.dt-tbody td {
+    padding: 0.75rem 1rem;
+    color: var(--color-gray-700);
+    vertical-align: middle;
+    max-width: 20rem;
+}
+
+.dt-tbody td.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dt-tbody td .cell-primary {
+    font-weight: 500;
+    color: var(--color-gray-900);
+}
+
+.dt-tbody td .cell-secondary {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    margin-top: 0.125rem;
+}
+
+.dt-tbody td .cell-mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-gray-600);
+}
+
+.dt-tbody tr.selected {
+    background-color: var(--color-primary-50);
+}
+
+.dt-tbody tr.selected td {
+    color: var(--color-gray-900);
+}
+
+.dt-empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.dt-empty-state-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-gray-300);
+    margin: 0 auto 0.75rem;
+}
+
+.dt-empty-state-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    margin-bottom: 0.25rem;
+}
+
+.dt-empty-state-description {
+    font-size: 0.8125rem;
+    color: var(--color-gray-400);
+}
+
+.dt-loading-row td {
+    padding: 3rem;
+    text-align: center;
+    color: var(--color-gray-400);
+}
+
+.dt-loading-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--color-gray-200);
+    border-top-color: var(--color-primary-600);
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+.dt-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--color-gray-200);
+    background-color: var(--color-gray-50);
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.dt-pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.dt-page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.875rem;
+    height: 1.875rem;
+    padding: 0 0.375rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.dt-page-btn:hover:not(:disabled) {
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
+    border-color: var(--color-gray-400);
+}
+
+.dt-page-btn.active {
+    background-color: var(--color-primary-600);
+    border-color: var(--color-primary-600);
+    color: #ffffff;
+}
+
+.dt-page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.dt-page-info {
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+}
+
+.dt-page-size-select {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--color-gray-600);
+}
+
+.dt-page-size-select select {
+    padding: 0.25rem 1.75rem 0.25rem 0.5rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius);
+    background-color: #ffffff;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.375rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.dt-col-actions {
+    width: 1px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.dt-col-checkbox {
+    width: 2.5rem;
+    text-align: center;
+}
+
+.dt-row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.dt-tbody tr:hover .dt-row-actions {
+    opacity: 1;
+}
+
+.dt-row-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius);
+    color: var(--color-gray-500);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.dt-row-action-btn:hover {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+}
+
+.dt-row-action-btn.danger:hover {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+}

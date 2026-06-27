@@ -1,0 +1,14 @@
+# .gitignore
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+/venv/
+env/
+.pytest_cache/
+
+# Added these to block your local environment and IDE settings
+my_env/
+.idea/

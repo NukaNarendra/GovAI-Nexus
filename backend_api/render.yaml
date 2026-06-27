@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: enterprise-governance-api
+    env: python
+    region: oregon
+    plan: standard
+    buildCommand: "pip install -r requirements.txt && alembic upgrade head"
+    startCommand: "uvicorn src.main:app --host 0.0.0.0 --port $PORT --workers 4"
+    healthCheckPath: /api/v1/health/liveness
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
+      - key: DATABASE_URL
+        fromDatabase:
+          name: governance-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: governance-cache
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+
+databases:
+  - name: governance-db
+    region: oregon
+    plan: standard
+    postgresMajorVersion: 15
+
+  - type: redis
+    name: governance-cache
+    region: oregon
+    plan: starter
+    ipAllowList: []

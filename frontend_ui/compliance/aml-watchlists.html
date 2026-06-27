@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AML Watchlists | Nexus Governance OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: {} } }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="h-full w-full antialiased text-gray-900 bg-gray-50 flex overflow-hidden">
+    <!-- SVG Sprite Defs -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <symbol id="icon-compliance" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></symbol>
+        </defs>
+    </svg>
+
+    <div id="toast-mount"></div>
+    <div id="sidebar-mount" class="h-full shrink-0 z-30"></div>
+
+    <div class="flex-1 flex flex-col h-screen min-w-0 overflow-hidden transition-all duration-300 lg:ml-64">
+        <div id="header-mount" class="shrink-0 z-20"></div>
+
+        <main id="aml-mount" class="flex-1 overflow-y-auto overflow-x-hidden bg-gray-50 custom-scrollbar relative focus:outline-none">
+            <!-- AmlController will mount here -->
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/config.js"></script>
+    <script src="/js/utils/formatters.js"></script>
+    <script src="/js/utils/domUtils.js"></script>
+    <script src="/js/utils/validators.js"></script>
+    <script src="/js/utils/authStore.js"></script>
+    <script src="/js/api/apiClient.js"></script>
+    <script src="/js/api/authApi.js"></script>
+    <script src="/js/api/amlApi.js"></script>
+    <script src="/js/components/ToastNotification.js"></script>
+    <script src="/js/components/Modal.js"></script>
+    <script src="/js/components/DataTable.js"></script>
+    <script src="/js/components/Sidebar.js"></script>
+    <script src="/js/components/Header.js"></script>
+    <script src="/js/controllers/amlController.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                new Sidebar('#sidebar-mount');
+                new Header('#header-mount');
+                new AmlController('#aml-mount');
+            }, 50);
+        });
+    </script>
+</body>
+</html>
